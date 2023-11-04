@@ -1,22 +1,22 @@
 import study from '../../assets/study.png'
 const Footer = () => {
     return (
-        <footer className="footer p-10  text-base-content">
-  <aside>
+        <footer className="footer p-10  text-base-content font-bold">
+  <aside className='text-center'>
     <img className='w-4/6' src={study} alt="" />
     <p>Online Group Study Platform.<br/>Collecting Learners since 2010</p>
   </aside> 
   <nav>
-    <header className="footer-title">Services</header> 
-    <a className="link link-hover">Branding</a> 
-    <a className="link link-hover">Design</a> 
-    <a className="link link-hover">Marketing</a> 
-    <a className="link link-hover">Advertisement</a>
+    <header className="footer-title">Programs</header> 
+    <a className="link link-hover">Study</a> 
+    <a className="link link-hover">Connecting</a> 
+    <a className="link link-hover">Grouping</a> 
+    <a className="link link-hover">Learing</a>
   </nav> 
   <nav>
-    <header className="footer-title">Company</header> 
-    <a className="link link-hover">About us</a> 
-    <a className="link link-hover">Contact</a> 
+    <header className="footer-title">Benefits</header> 
+    <a className="link link-hover">Success</a> 
+    <a className="link link-hover">Team Work</a> 
     <a className="link link-hover">Jobs</a> 
     <a className="link link-hover">Press kit</a>
   </nav> 

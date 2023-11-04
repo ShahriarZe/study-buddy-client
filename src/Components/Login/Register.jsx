@@ -1,8 +1,68 @@
 import Lottie from 'lottie-react';
 import lot from '../../assets/lottie.json'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { updateProfile } from 'firebase/auth';
+import Swal from 'sweetalert2';
 const Register = () => {
+
+    const {googleSignIn,createUser} = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    const handleRegister = e =>{
+        e.preventDefault()
+        const form = e.target;
+        const name = form.name.value
+        const image = form.image.value
+        const email = form.email.value
+        const password = form.password.value
+        const user = { email, password, name, image }
+        console.log(user);
+
+        createUser(email,password)
+        .then(result =>{
+            console.log(result.user)
+            updateProfile(result.user,{
+                displayName:name,
+                photoURL:image
+            })
+            navigate(location?.state ? location?.state : '/')
+            e.target.reset()
+            Swal.fire({
+                icon: 'success',
+                title: 'Congratulations...',
+                text: 'Registration Successfull',
+            })
+        })
+        .catch(err =>{
+            console.log(err);
+            e.target.reset()
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'User Already Exist',
+            })
+        })
+    }
+
+    const handleGoogleButton = ()=>{
+        googleSignIn()
+        .then(result =>{
+            console.log(result.user);
+            navigate(location.state ? location.state : '/')
+            Swal.fire({
+                icon: 'success',
+                title: 'Congratulations...',
+                text: 'Login Successfull',
+            })
+        })
+        .catch(err =>{
+            console.log(err);
+        })
+    }
     return (
         <div className="hero min-h-screen">
             <div className="hero-content flex-col lg:flex-row">
@@ -11,7 +71,7 @@ const Register = () => {
                 </div>
                 <div className="card flex-shrink-0 px-6 py-2  bg-base-100 flex-1 border">
                 <h1 className="text-3xl font-bold text-center text-accent">Register now!</h1>
-                    <form  className="card-body">
+                    <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
@@ -20,15 +80,15 @@ const Register = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Photo URL</span>
+                                <span className="label-text">Image URL</span>
                             </label>
-                            <input type="text" name='photo' placeholder="Photo URL" className="input input-bordered" required />
+                            <input type="text" name="image" placeholder="Image URL" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name='email' placeholder="email" className="input input-bordered" required />
+                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -49,7 +109,7 @@ const Register = () => {
                     <div className="divider">continue with</div>
                     <div className="flex justify-center">
                         <div className="mb-3">
-                            <button className=" btn btn-outline btn-accent ">
+                            <button onClick={handleGoogleButton} className=" btn btn-outline btn-accent ">
                                 <FaGoogle></FaGoogle>
                                 Google
                             </button>

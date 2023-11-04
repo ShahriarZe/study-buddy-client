@@ -21,6 +21,30 @@ const Register = () => {
         const password = form.password.value
         const user = { email, password, name, image }
         console.log(user);
+        if (password.length < 6) {
+            e.target.reset()
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password Must be 6 Characters Long!',
+            })
+        }
+        else if (!/[A-Z]/.test(password)) {
+            e.target.reset()
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password Must Conatain 1 Uppercase Letter!',
+            })
+        }
+        else if (!/[!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(password)) {
+            e.target.reset()
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password Must Conatain 1 Special Character!',
+            })
+        }
 
         createUser(email,password)
         .then(result =>{

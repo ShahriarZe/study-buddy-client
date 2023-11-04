@@ -1,12 +1,15 @@
 import img from '../../assets/user.png'
 import study from '../../assets/study.png'
 import { Link, NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const NavBar = () => {
 
+    const { user, logOut } = useContext(AuthContext)
     const links = <>
         <li className="lg:mr-5"><NavLink to='/'>Home</NavLink></li>
-        
+
     </>
     return (
         <div className="navbar bg-base-100 max-w-7xl mx-auto">
@@ -34,15 +37,23 @@ const NavBar = () => {
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img src={img} alt="" />
+                            {
+                                user ? <img src={user.photoURL} alt="" /> :
+                                    <img src={img} alt="" />
+                            }
                         </div>
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         <div className="text-xl text-center">
-                            <h2>My Name</h2>
+                            {
+                                user && <h1>{user.displayName}</h1>
+                            }
                         </div>
                         <div className="text-xl text-center">
-                            <button>LogOut</button>
+                            {
+                                user ? <button onClick={logOut}>SignOut</button> :
+                                    <Link to="/login"><button className="btn btn-outline btn-accent w-full">Login</button></Link>
+                            }
                         </div>
                     </ul>
                 </div>

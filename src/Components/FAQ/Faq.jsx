@@ -3,9 +3,9 @@ import Lottie from 'lottie-react';
 const Faq = () => {
     return (
         <div className='max-w-7xl mx-auto mt-10 mb-10'>
-            <h1 className='text-4xl font-extrabold mb-2'>Frequently Asked Questions (FAQ)</h1>
+            <h1 className='text-4xl font-extrabold mb-5'>Frequently Asked Questions (FAQ)</h1>
             <div className="hero  ">
-            <div className="hero-content flex-col lg:flex-row">
+            <div className="hero-content flex-col ">
                 <Lottie className='w-1/2' animationData={faq}></Lottie>
                 <div>
                     <div className="collapse bg-base-200 border-accent border-2 mb-5">

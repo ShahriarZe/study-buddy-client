@@ -9,6 +9,9 @@ const NavBar = () => {
     const { user, logOut } = useContext(AuthContext)
     const links = <>
         <li className="lg:mr-5"><NavLink to='/'>Home</NavLink></li>
+        {
+            user ? <li className="lg:mr-5"><NavLink to='/createAssignment'>Create Assignment</NavLink></li> : ''
+        }
 
     </>
     return (
@@ -38,7 +41,7 @@ const NavBar = () => {
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
                             {
-                                user ? <img src={user.photoURL} alt="" /> :
+                                user ? <img title={user.displayName} src={user.photoURL} alt="" /> :
                                     <img src={img} alt="" />
                             }
                         </div>

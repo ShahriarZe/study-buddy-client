@@ -2,7 +2,7 @@
 const FeatureCard = ({feature}) => {
     const {name,image}=feature
     return (
-        <div className="card image-full">
+        <div className="card image-full" data-aos="flip-left">
   <figure><img src={image} alt="Shoes" /></figure>
   <div className="card-body flex justify-center items-center">
     <h2 className="card-title">{name}</h2>

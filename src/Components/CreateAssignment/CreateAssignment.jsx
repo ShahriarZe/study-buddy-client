@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const CreateAssignment = () => {
     const [selectedDifficulty, setSelectedDifficulty] = useState("");
     const [selectedDate, setSelectedDate] = useState(null);
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const handleDifficultyChange = (e) => {
         setSelectedDifficulty(e.target.value);
     };
@@ -16,7 +16,7 @@ const CreateAssignment = () => {
         setSelectedDate(date);
     };
 
-    const handleCreateAssignment = e =>{
+    const handleCreateAssignment = e => {
         e.preventDefault();
         const form = e.target;
         const tittle = form.tittle.value
@@ -26,6 +26,13 @@ const CreateAssignment = () => {
         const difficulty = form.difficulty.value
         const date = form.date.value
         const userEmail = user?.email
+        if (!tittle || !description || !mark || !photo) {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please fill out all the fields!',
+            });
+        }
         const newAssignment = {
             tittle,
             description,
@@ -36,15 +43,16 @@ const CreateAssignment = () => {
             userEmail
         }
         console.log(newAssignment);
-        axios.post('http://localhost:5000/assignments',newAssignment)
-        .then(res =>{
-            console.log(res.data)
-            Swal.fire({
-                icon: 'success',
-                title: 'Congratulations...',
-                text: 'Assignment Added Seccessfully !!',
+        axios.post('http://localhost:5000/assignments', newAssignment)
+            .then(res => {
+                console.log(res.data)
+                e.target.reset()
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Congratulations...',
+                    text: 'Assignment Added Seccessfully !!',
+                })
             })
-        })
 
     }
     return (
@@ -57,7 +65,7 @@ const CreateAssignment = () => {
                             <span className="label-text">Tittle</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" placeholder="Tittle" name="tittle" className="w-full input input-bordered  " />
+                            <input type="text" placeholder="Tittle" name="tittle"  className="w-full input input-bordered  " />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 lg:ml-4">
@@ -65,7 +73,7 @@ const CreateAssignment = () => {
                             <span className="label-text">Description</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="description" placeholder="Description" className="input input-bordered  w-full" />
+                            <input type="text" name="description" placeholder="Description"  className="input input-bordered  w-full" />
                         </label>
                     </div>
 
@@ -77,7 +85,7 @@ const CreateAssignment = () => {
                             <span className="label-text">Mark</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" placeholder="Mark" name="mark" className="w-full input input-bordered  " />
+                            <input type="text" placeholder="Mark" name="mark"  className="w-full input input-bordered  " />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 lg:ml-4">
@@ -85,7 +93,7 @@ const CreateAssignment = () => {
                             <span className="label-text">Photo URL</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered  w-full" />
+                            <input type="text" name="photo" placeholder="Photo URL"  className="input input-bordered  w-full" />
                         </label>
                     </div>
                 </div>

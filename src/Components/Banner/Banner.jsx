@@ -9,8 +9,8 @@ const Banner = () => {
             <h2 className='md:text-4xl lg:text-6xl font-bold'>StuddyBuddy...</h2>
             <h2 className='md:text-3xl lg:text-4xl font-bold'>Connecting Learners, Fostering Growth, and Achieving Success </h2>
             <div className='flex gap-5'>
-              <button className='btn btn-outline btn-info'>Show Details</button>
-              <button className='btn btn-info mb-16 lg:mb-0'>Join Now</button>
+              <button className='btn btn-outline btn-accent'>Show Details</button>
+              <button className='btn btn-accent mb-16 lg:mb-0 text-white'>Join Now</button>
             </div>
           </div>
         </div>

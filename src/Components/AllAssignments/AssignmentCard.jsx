@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
 const AssignmentCard = ({assignment}) => {
-    const {tittle,mark,photo,difficulty,date,description}=assignment
+    const {_id,tittle,mark,photo,difficulty,date,description}=assignment
     return (
         <div className="card bg-base-100 shadow-xl border-accent border">
   <figure className="px-10 pt-10">
@@ -13,7 +15,7 @@ const AssignmentCard = ({assignment}) => {
     <p>Due : {date}</p>
     <p>{description}</p>
     <div className="card-actions flex justify-center">
-      <button className="btn btn-accent btn-outline">View Assignment</button>
+      <Link to={`/viewassignment/${_id}`}><button className="btn btn-accent btn-outline">View Assignment</button></Link>
       <button className="btn btn-accent btn-outline">Update</button>
     </div>
   </div>

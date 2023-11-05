@@ -6,7 +6,7 @@ const Faq = () => {
             <h1 className='text-4xl font-extrabold mb-5'>Frequently Asked Questions (FAQ)</h1>
             <div className="hero  ">
             <div className="hero-content flex-col ">
-                <Lottie className='w-1/2' data-aos="fade-down" animationData={faq}></Lottie>
+                <Lottie className='w-1/2' data-aos="fade-down" data-aos-duration="3000" animationData={faq}></Lottie>
                 <div>
                     <div className="collapse bg-base-200 border-accent border-2 mb-5">
                         <input type="radio" name="my-accordion-1" />

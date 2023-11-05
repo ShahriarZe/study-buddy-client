@@ -1,10 +1,10 @@
 import study from '../../assets/study.png'
 const Footer = () => {
     return (
-        <footer className="footer p-10  text-base-content font-bold">
+        <footer className="footer p-10  text-base-content font-bold border-t-2">
   <aside className='text-center'>
     <img className='w-4/6' src={study} alt="" />
-    <p>Online Group Study Platform.<br/>Collecting Learners since 2010 <br /> Copyright © SHAHRIAR AHMMED - All right reserved</p>
+    <p>Online Group Study Platform.<br/>Collecting Learners since 2010 <br /> Copyright © SHAHRIAR AHMMED - All right eserved</p>
     
   </aside> 
   <nav>

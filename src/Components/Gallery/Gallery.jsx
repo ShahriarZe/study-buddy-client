@@ -13,7 +13,7 @@ const Gallery = () => {
         <h1 className='text-4xl font-extrabold mb-5 max-w-7xl mx-auto mt-20 '>Our Student Groups</h1>
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 masonry max-w-7xl mx-auto mb-20 lg:mb-40" >
           {imageUrls.map((url, index) => (
-            <div key={index} className="w-full relative overflow-hidden rounded-lg masonry-item" data-aos="fade-down" data-aos-duration="4000">
+            <div key={index} className="w-full relative overflow-hidden rounded-lg masonry-item" data-aos="fade-down" data-aos-duration="3000">
               <img src={url} alt={`Image ${index + 1}`} className="object-cover w-full" />
             </div>
           ))}

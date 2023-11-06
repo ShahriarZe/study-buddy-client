@@ -6,6 +6,7 @@ const AllAssignments = () => {
     // const [itemsPerPage, setItemsPerPage] = useState(3)
     // const [currentPage, setCurrentPage] = useState(0)
 
+    // ---All Assignment Data---
     const  assignments  = useLoaderData()
 
 
@@ -43,6 +44,9 @@ const AllAssignments = () => {
                     ></AssignmentCard>)
                 }
             </div>
+
+
+
             {/* <div>
                 <p>Current Page : {currentPage}</p>
                 <button onClick={handlePrevPage}>Prev</button>
@@ -58,6 +62,8 @@ const AllAssignments = () => {
                     <option value="1">1</option>
                 </select>
             </div> */}
+
+
         </div>
     );
 };

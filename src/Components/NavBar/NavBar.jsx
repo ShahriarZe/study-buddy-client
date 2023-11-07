@@ -13,6 +13,9 @@ const NavBar = () => {
         {
             user ? <li className="lg:mr-5"><NavLink to='/createAssignment'>Create Assignment</NavLink></li> : ''
         }
+        {
+            user ? <li className="lg:mr-5"><NavLink to='/submissions'>Submitted Assignments</NavLink></li> : ''
+        }
 
     </>
     return (

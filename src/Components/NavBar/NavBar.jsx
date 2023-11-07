@@ -47,10 +47,10 @@ const NavBar = () => {
                             }
                         </div>
                     </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 border border-accent">
                         <div className="text-xl text-center">
                             {
-                                user && <h1>{user.displayName}</h1>
+                                user && <h1 className='border-b border-accent font-bold'>{user.displayName}</h1>
                             }
                         </div>
                         <div className="text-xl text-center">

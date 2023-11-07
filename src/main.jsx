@@ -16,6 +16,7 @@ import CreateAssignment from './Components/CreateAssignment/CreateAssignment';
 import AllAssignments from './Components/AllAssignments/AllAssignments';
 import ViewAssignment from './Components/ViewAssignment/ViewAssignment';
 import Update from './Components/AllAssignments/Update';
+import PrivateRoute from './Routes/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -36,22 +37,26 @@ const router = createBrowserRouter([
       },
       {
         path: "/createAssignment",
-        element: <CreateAssignment></CreateAssignment>
+        element: <PrivateRoute>
+          <CreateAssignment></CreateAssignment>
+        </PrivateRoute>
       },
       {
         path: "/allassignments",
         element: <AllAssignments></AllAssignments>,
-        loader:()=>fetch('http://localhost:5000/assignments')
+        loader: () => fetch('http://localhost:5000/assignments')
       },
       {
         path: "/viewassignment/:id",
-        element: <ViewAssignment></ViewAssignment>,
-        loader:()=>fetch('http://localhost:5000/assignments')
+        element: <PrivateRoute>
+          <ViewAssignment></ViewAssignment>
+        </PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/assignments')
       },
       {
         path: "/update/:id",
         element: <Update></Update>,
-        loader:()=>fetch('http://localhost:5000/assignments')
+        loader: () => fetch('http://localhost:5000/assignments')
       },
     ]
   },

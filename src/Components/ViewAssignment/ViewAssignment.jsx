@@ -1,4 +1,4 @@
-import { useLoaderData, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
@@ -66,7 +66,7 @@ const ViewAssignment = () => {
           <p>Due : {viewDetails.date}</p>
           <p>{viewDetails.description}</p>
           <div className="card-actions flex justify-center">
-            <button className="btn btn-accent btn-outline">Take Assignment</button>
+            <Link to={`/submit/${_id}`}><button className="btn btn-accent btn-outline">Take Assignment</button></Link>
             <button onClick={() => handleDelete(_id)} className="btn btn-accent btn-outline">DELETE</button>
           </div>
         </div>

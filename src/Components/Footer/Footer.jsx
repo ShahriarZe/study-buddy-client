@@ -4,7 +4,7 @@ const Footer = () => {
         <footer className="footer p-10  text-base-content font-bold border-t-2">
   <aside className='text-center'>
     <img className='w-4/6' src={study} alt="" />
-    <p>Online Group Study Platform.<br/>Collecting Learners since 2010 <br /> Copyright © SHAHRIAR AHMMED - All right eserved</p>
+    <p>Online Group Study Platform.<br/>Collecting Learners since 2010 <br /> Copyright © SHAHRIAR AHMMED - All rights Reserved</p>
     
   </aside> 
   <nav>

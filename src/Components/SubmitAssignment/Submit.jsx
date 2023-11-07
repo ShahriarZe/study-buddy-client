@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useLoaderData, useParams } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const Submit = () => {
@@ -17,6 +19,7 @@ const Submit = () => {
         const drive = form.drive.value
         const feedback = form.feedback.value
         const userEmail = user.email
+        const status = 'Pending'
         const userName = user.displayName
         const submission = {
             drive,
@@ -24,9 +27,20 @@ const Submit = () => {
             userEmail,
             userName,
             tittle,
-            mark
+            mark,
+            status
         }
-        console.log(submission);
+        console.log(submission)
+        axios.post('http://localhost:5000/submissions', submission)
+        .then(res => {
+            console.log(res.data)
+            e.target.reset()
+            Swal.fire({
+                icon: 'success',
+                title: 'Congratulations...',
+                text: 'Assignment Submitted Seccessfully !!',
+            })
+        })
     }
     return (
       <div className="min-h-[80vh] p-10 lg:p-40">

@@ -19,6 +19,7 @@ import Update from './Components/AllAssignments/Update';
 import PrivateRoute from './Routes/PrivateRoute';
 import Submit from './Components/SubmitAssignment/Submit';
 import SubmittedAssignment from './Components/SubmittedAssignment/SubmittedAssignment';
+import MySubmission from './Components/MySubmission/MySubmission';
 
 const router = createBrowserRouter([
   {
@@ -68,10 +69,15 @@ const router = createBrowserRouter([
         loader: () => fetch('http://localhost:5000/assignments'),
       },
       {
-        path:"/submissions",
+        path:"/allsubmissions",
         element:<SubmittedAssignment></SubmittedAssignment>,
         loader: ()=> fetch('http://localhost:5000/submissions')
-      }
+      },
+      {
+        path:"/mysubmissions",
+        element:<MySubmission></MySubmission>,
+        loader: ()=> fetch('http://localhost:5000/submissions')
+      },
     ]
   },
 ]);
@@ -80,5 +86,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AuthProvider>
       <RouterProvider router={router} />
     </AuthProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

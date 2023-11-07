@@ -14,12 +14,15 @@ const NavBar = () => {
             user ? <li className="lg:mr-5"><NavLink to='/createAssignment'>Create Assignment</NavLink></li> : ''
         }
         {
-            user ? <li className="lg:mr-5"><NavLink to='/submissions'>Submitted Assignments</NavLink></li> : ''
+            user ? <li className="lg:mr-5"><NavLink to='/allsubmissions'>Submitted Assignments</NavLink></li> : ''
+        }
+        {
+            user ? <li className="lg:mr-5"><NavLink to='/mysubmissions'>My Submissions</NavLink></li> : ''
         }
 
     </>
     return (
-        <div className="navbar bg-base-100 max-w-7xl mx-auto">
+        <div className="navbar bg-base-100 mb-10 ">
             <div className="navbar-start ">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

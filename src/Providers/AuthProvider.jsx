@@ -6,66 +6,66 @@ import axios from "axios";
 
 export const AuthContext = createContext(null)
 const googleProvider = new GoogleAuthProvider()
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
 
-    const [user,setUser]=useState(null)
-    const [loading,setLoading]=useState(true)
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
 
     // Google SignIn
-    const googleSignIn = () =>{
+    const googleSignIn = () => {
         setLoading(true)
-        return signInWithPopup(auth,googleProvider)
+        return signInWithPopup(auth, googleProvider)
     }
 
     // Create User
-    const createUser = (email,password)=>{
+    const createUser = (email, password) => {
         setLoading(true)
-        return createUserWithEmailAndPassword(auth,email,password)
+        return createUserWithEmailAndPassword(auth, email, password)
     }
 
     // SignIn User
-    const signInUser =(email,password)=>{
+    const signInUser = (email, password) => {
         setLoading(true)
-        return signInWithEmailAndPassword(auth,email,password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
     // LogOut User 
-    const logOut =()=>{
+    const logOut = () => {
         setLoading(true)
         return signOut(auth)
     }
 
     // Observer
-    useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth,currentUser =>{
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
 
             const userEmail = currentUser?.email || user?.email
-            const loggedUser= {email:userEmail}
+            const loggedUser = { email: userEmail }
             setUser(currentUser)
             setLoading(false)
 
-            if(currentUser){
-        
-                axios.post('http://localhost:5000/jwt',loggedUser,{withCredentials:true})
-                .then(res=>{
-                    console.log(res.data)
-                })
+            if (currentUser) {
+
+                axios.post('https://studdy-buddy-server.vercel.app/jwt', loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                    })
             }
-            else{
-                axios.post('http://localhost:5000/logout',loggedUser,{withCredentials:true})
-                .then(res =>{
-                    console.log(res.data)
-                })
+            else {
+                axios.post('https://studdy-buddy-server.vercel.app/logout', loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                    })
             }
         })
-        return ()=>{
+        return () => {
             unSubscribe()
         }
-    },[])
+    }, [])
 
 
 
-    const authentications={
+    const authentications = {
         googleSignIn,
         createUser,
         signInUser,

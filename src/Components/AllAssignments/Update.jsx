@@ -19,7 +19,7 @@ const Update = () => {
     const { _id, tittle, mark, photo, description } = update
 
 
-    const handleUpdate = e =>{
+    const handleUpdate = e => {
         e.preventDefault();
         const form = e.target;
         const tittle = form.tittle.value
@@ -36,24 +36,24 @@ const Update = () => {
             difficulty,
             date
         }
-        fetch(`http://localhost:5000/assignments/${_id}`,{
-            method:'PUT',
-            headers:{
-                'content-type':'application/json'
+        fetch(`https://studdy-buddy-server.vercel.app/assignments/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
             },
-            body:JSON.stringify(updatedAssignment)
+            body: JSON.stringify(updatedAssignment)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if(data.modifiedCount){
-                Swal.fire(
-                    'Congratulations!',
-                    'Assignment Updated',
-                    'success'
-                )
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    Swal.fire(
+                        'Congratulations!',
+                        'Assignment Updated',
+                        'success'
+                    )
+                }
+            })
     }
 
     return (

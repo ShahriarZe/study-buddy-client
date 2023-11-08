@@ -2,14 +2,16 @@ import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../../Providers/AuthProvider";
-import axios from "axios";
 import Swal from "sweetalert2";
 import { useCallback } from "react";
 import { loadSlim } from "tsparticles-slim";
 import Particles from "react-particles";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const CreateAssignment = () => {
+
+    const axiosSecure=useAxiosSecure()
 
     const particlesInit = useCallback(async engine => {
         console.log(engine);
@@ -59,7 +61,7 @@ const CreateAssignment = () => {
             userEmail
         }
         console.log(newAssignment);
-        axios.post('http://localhost:5000/assignments', newAssignment)
+        axiosSecure.post('/assignments', newAssignment)
             .then(res => {
                 console.log(res.data)
                 e.target.reset()

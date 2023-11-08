@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import MySub from "./MySub";
+import axios from "axios";
 
 const MySubmission = () => {
 
@@ -10,10 +11,11 @@ const MySubmission = () => {
     const url = `http://localhost:5000/singlesubmission?userEmail=${user.email}`
 
     useEffect(()=>{
-        fetch(url)
-        .then(res=>res.json())
-        .then(data => setMySubmission(data))
-    },[])
+        axios.get(url,{withCredentials:true})
+        .then(res =>{
+            setMySubmission(res.data)
+        })
+    },[url])
 
     return (
         <div className="min-h-screen max-w-7xl mx-auto lg:p-40">

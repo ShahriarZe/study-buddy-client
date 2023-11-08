@@ -50,9 +50,9 @@ const Submit = () => {
           <form onSubmit={submitForm}>
          
           <div className="form-control md:w-1/2">
-          <label htmlFor="pdfFile">Upload Drive Link: </label>
+          <label htmlFor="pdfFile">Upload pdf Link: </label>
                         <label className="input-group ">
-                            <input type="text" placeholder="Google Drive" name="drive"  className="w-full input border border-accent " />
+                            <input type="text" placeholder="PDF Link" name="drive"  className="w-full input border border-accent " />
                         </label>
                     </div>
             <div>

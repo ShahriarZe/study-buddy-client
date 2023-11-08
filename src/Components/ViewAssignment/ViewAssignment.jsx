@@ -1,24 +1,24 @@
 import { Link, useLoaderData, useLocation, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
-// import { loadSlim } from "tsparticles-slim";
-// import Particles from "react-particles";
+import { loadSlim } from "tsparticles-slim";
+import Particles from "react-particles";
 
 const ViewAssignment = () => {
 
 
   // --- Particles ---
-//   const particlesInit = useCallback(async engine => {
-//     console.log(engine);
+  const particlesInit = useCallback(async engine => {
+    console.log(engine);
     
-//     await loadSlim(engine);
-// }, []);
+    await loadSlim(engine);
+}, []);
 
-// const particlesLoaded = useCallback(async container => {
-//     await console.log(container);
-// }, []);
+const particlesLoaded = useCallback(async container => {
+    await console.log(container);
+}, []);
 
 
 
@@ -72,7 +72,7 @@ const ViewAssignment = () => {
   return (
     <div className="max-w-5xl mx-auto min-h-screen mt-20 md:mt-20 lg:mt-0 lg:p-40">
 
-      {/* <Particles
+      <Particles
             id="tsparticles"
             init={particlesInit}
             loaded={particlesLoaded}
@@ -140,7 +140,7 @@ const ViewAssignment = () => {
                 },
                 detectRetina: true,
             }}
-        /> */}
+        />
 
       <motion.div animate={{ rotate: rotate ? 360 : 0 }}
         onClick={() => { setRotate(!rotate) }} className="card bg-base-100 shadow-xl border-accent border">

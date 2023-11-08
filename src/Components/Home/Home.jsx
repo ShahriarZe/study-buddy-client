@@ -1,31 +1,31 @@
-// import { useCallback } from "react";
+import { useCallback } from "react";
 import Banner from "../Banner/Banner";
 import Faq from "../FAQ/Faq";
 import Features from "../Features/Features";
 import Gallery from "../Gallery/Gallery";
 
-// import { loadSlim } from "tsparticles-slim";
-// import Particles from "react-particles";
+import { loadSlim } from "tsparticles-slim";
+import Particles from "react-particles";
 
 const Home = () => {
 
 
-    // const particlesInit = useCallback(async engine => {
-    //     console.log(engine);
+    const particlesInit = useCallback(async engine => {
+        console.log(engine);
         
-    //     await loadSlim(engine);
-    // }, []);
+        await loadSlim(engine);
+    }, []);
     
-    // const particlesLoaded = useCallback(async container => {
-    //     await console.log(container);
-    // }, []);
+    const particlesLoaded = useCallback(async container => {
+        await console.log(container);
+    }, []);
 
 
     return (
         <div>
 
 
-            {/* <Particles
+            <Particles
             id="tsparticles"
             init={particlesInit}
             loaded={particlesLoaded}
@@ -93,7 +93,7 @@ const Home = () => {
                 },
                 detectRetina: true,
             }}
-        /> */}
+        />
 
 
             <Banner></Banner>

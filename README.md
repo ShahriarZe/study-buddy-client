@@ -1,5 +1,6 @@
 # StuddyBuddy LTD
 ## Live Link :  https://study-buddy-1db4a.web.app/
+## Technology Used : React,MongoDB,Firebase,JWT,Tailwind CSS & DaisyUI.
 
 ## Features :
 

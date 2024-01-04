@@ -1,7 +1,7 @@
 # StuddyBuddy LTD
 ## Live Link :  https://study-buddy-1db4a.web.app/
 ## Server Link : https://github.com/ShahriarZe/studdy-buddy-server
-## Technology Used : React,MongoDB,Firebase,JWT,Tailwind CSS & DaisyUI.
+### Technology Used : React,MongoDB,Firebase,JWT,Tailwind CSS & DaisyUI.
 
 ## Features :
 
